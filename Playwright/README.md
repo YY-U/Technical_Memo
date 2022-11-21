@@ -43,5 +43,5 @@ playwright codegen wikipedia.org -o test.py --device "iPhone 11"
 
 ## pytest
 - `pytest`はPythonスクリプトをテストするための別フレームワーク
-- `def test_*` `def *_test`、`test_*.py` で`pytest`実行される
+- `def test_*` `def *_test`、`test_*.py` 等で`pytest`実行される
 - https://note.com/npaka/n/n84de488ba011
