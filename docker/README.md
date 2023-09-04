@@ -34,6 +34,14 @@ docker exec -it ＜起動したコンテナ名＞ bash
         [root@host0002 /]$
         ```
 
+* exec
+    * 動中のコンテナ内で、指定したコマンドを実行
+        ```shell
+        # ex linuxコマンドls実行
+        docker run -dit --init --name testvm2 ubuntu
+        docker exec -it testvm2 ls -l /etc
+        ```
+
 ## オプション
 * -i（--interactive）
     * ホストのターミナルからの入力がコンテナの標準入力につなげる役割
