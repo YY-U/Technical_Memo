@@ -35,7 +35,31 @@ docker exec -it ＜起動したコンテナ名＞ bash
         ```
 
 ## オプション
-* -d(--detach)
+* -i（--interactive）
+    * ホストのターミナルからの入力がコンテナの標準入力につなげる役割
+    * 標準入力：キー入力、パイプされたデータ、ファイルからのリダイレクトなど
+* -t（--tty）
+    * コンテナの標準出力をホストの標準出力につなげること、入出力の結果確認などホスト側で実現するなど
+    * 疑似端末：
+* -it（-i、-t）
+    ```shell
+    # -iは、Keep STDIN open even if not attached
+    # 標準入力を開き続ける。
+
+    # -tは、Allocate a pseudo-TTY
+    # 疑似ttyを割りあてる。
+
+    # 標準入力を開き続け、そこを操作出来るようにする。
+    # →手元の環境で、docker内入力ができるようにする
+    ```
+
+* -e
+    * コンテナ内部に環境変数を設定
+    ```shell
+    docker run -d --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root mysql
+    ```
+
+* -d（--detach）
     * バックグラウンドでコンテナ実行
         * 通常だと、ホストOS側に実行処理結果・エラーなどが表示されてしまう。dコマンドはそれらを非表示にできる
     ```shell
