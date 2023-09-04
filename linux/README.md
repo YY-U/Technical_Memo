@@ -1,5 +1,18 @@
 # linux-commamd
 
+## ポート番号一覧確認
+* `ss`コマンド
+```shell
+ss -atnu
+```
+通信確立しているポートのみ表示
+```shell
+ss -t
+```
+
+* 参考：
+    * https://www.linuxmaster.jp/linux_skill/2009/02/linux-4.html
+
 ## 圧縮
 ```
 zip [オプション] アーカイブ ファイル名
