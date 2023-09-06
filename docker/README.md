@@ -98,9 +98,10 @@ docker exec -it ＜起動したコンテナ名＞ bash
     ```shell
     docker run --link <接続先コンテナ名：エイリアス名（短縮コマンド） など>
     ```
-
-
-docker run -it --name Container2 --link Container1:c1 centos /bin/bash
+    ex
+    ```shell
+    docker run -it --name Container2 --link Container1:c1 centos /bin/bash
+    ```
 
 ## 参照
 * https://thinkit.co.jp/story/2015/09/08/6383
