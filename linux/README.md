@@ -13,6 +13,16 @@ ss -t
 * 参考：
     * https://www.linuxmaster.jp/linux_skill/2009/02/linux-4.html
 
+## sed
+* 「stream editor」の略称で、指定したファイルをコマンドに従って処理することが出来る。入力を行単位で読み取り、テキスト変換などの編集をおこない行単位で出力する。正規表現に対応している。
+```shell
+sed [オプション] コマンド ファイル名
+# ex 条件に一致した行で最初の箇所を置換
+sed -e 's/rakus/RAKUS/' sample.txt
+```
+* 参考
+    * https://tech-blog.rakus.co.jp/entry/20211022/sed
+
 ## 圧縮
 ```
 zip [オプション] アーカイブ ファイル名
