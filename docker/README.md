@@ -90,6 +90,18 @@ docker exec -it ＜起動したコンテナ名＞ bash
     ```
     * 参考：https://qiita.com/Mayumi_Pythonista/items/15257212e0822b40a98a
 
+* -w（--workdir）
+  * コンテナ内の作業ディレクトリを指定されたパスに設定
+
+* -u
+  * コマンドが実行されるユーザーを設定、ユーザー名またはUIDとして指定
+  ```shell
+  # Dockerコンテナにuser権限で入りたい時など
+  docker exec -u $(id -u $USER):$(id -g $USER) -it <コンテナ名> /bin/sh
+  # 指定ユーザはLinux上でidコマンドを実行することで確認
+  uid=1000(<ユーザ名>) gid=1000(<ユーザ名>) groups=1000(<ユーザ名>) ...
+  ```
+
 * --rm
     * 通常、コンテナをstopさせると、状態が「Exited」になりますが、終了させたコンテナを、再び利用せずに、即座に破棄したい場合使用
 
