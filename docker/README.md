@@ -97,9 +97,7 @@ docker exec -it ＜起動したコンテナ名＞ bash
     * 同一ホスト上の2つのコンテナを通信させる
     ```shell
     docker run --link <接続先コンテナ名：エイリアス名（短縮コマンド） など>
-    ```
-    ex
-    ```shell
+    # ex
     docker run -it --name Container2 --link Container1:c1 centos /bin/bash
     ```
 
