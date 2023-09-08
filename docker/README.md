@@ -185,7 +185,24 @@ docker exec -it ＜起動したコンテナ名＞ bash
             * no ：（何もしない）
         * command：実行するコマンド
         * env_file：実行時に読み込みたい環境設定ファイル
-        * entrypoint：実行時に上書きするENTRYPOINT
+        * entrypoint：実行時に上書きするENTRYPOINT、コンテナ起動時に実行される処理
         * logging：ログを出力するパス
         * external_links：設定する外部リンク
         * network_mode：ネットワークモード設定
+
+* docker-compose：コマンド
+    * build
+        * imageを構築、コンテナは作成せず
+        * 一度ビルドするとキャッシュが作成され、次回以降処理が早くなる
+    * up
+        * コンテナの構築・起動を行う、キャッシュがある場合、キャッシ使用し、image構築、コンテナ構築、コンテナ実行を一括で実施可能
+        * オプション
+            * --build：キャッシュがない場合は、本オプションつけることで上記を行える
+            * -d：バックグラウンドにて実行
+    * exec
+        * サービスのコンテナ内でコマンド実行可能
+            ```shell
+            # ex
+            docker-compose exec web /bin/bash
+            root@XXXXXXXXX:/app
+            ```
