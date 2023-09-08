@@ -175,7 +175,7 @@ docker exec -it ＜起動したコンテナ名＞ bash
         * container_name：指定するコンテナ名
         * networks：接続するネットワーク
         * volumes：マウント設定
-            * [ホスト側相対Path]:[コンテナ絶対path]
+            * ホスト側相対Path:コンテナ絶対path
         * volumes_from：コンテナ間でマウントする際、マウント先のコンテナを指定
         * ports：マッピングするポート番号
         * environment：設定する環境変数
