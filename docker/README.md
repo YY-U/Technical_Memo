@@ -131,11 +131,11 @@ services: # services以下コンテナ名は何でも可
     コンテナ名1:
     コンテナ名2:
   ...
-networks:
+networks: #直下にネットワーク名定義
     ネットワーク名1:
     ネットワーク名2:
   ...
-volumes:
+volumes: #直下にボリューム名定義
     ボリューム名1:
     ボリューム名2:
   ...
@@ -144,22 +144,22 @@ volumes:
 ### servicesの詳細 ###
 services:
   コンテナ1:
-    image: <イメージ名>
-    container_name: <コンテナ名>
-    networks:
-        - <ネットワーク名>
-    volumes:
-        - <ボリューム名>
-    ports:
-        - <ポート番号>
-    environment:
-        <キー1>: <バリュー1>
-        <キー2>: <バリュー2>
-        ...
-    depends_on:
-        - <依存関係にあるサービス>
-    restart: <コンテナ停止時の対応>
-    command: <実行するコマンド>
+        image: <イメージ名>
+        container_name: <コンテナ名>
+        networks:
+            - <ネットワーク名>
+        volumes:
+            - <ボリューム名>
+        ports:
+            - <ポート番号>
+        environment:
+            <キー1>: <バリュー1>
+            <キー2>: <バリュー2>
+            ...
+        depends_on:
+            - <依存関係にあるサービス>
+        restart: <コンテナ停止時の対応>
+        command: <実行するコマンド>
   コンテナ2:
   ...
 ```
