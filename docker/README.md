@@ -188,7 +188,7 @@ docker exec -it ＜起動したコンテナ名＞ bash
         ...
         ```
         * image：指定するイメージ
-        * build：指定するDockerfile
+        * build：指定するDockerfile、Dockerfileをビルドしてイメージ作成、`image:[image name]`で名前を付与可能
             * context：Dockerfileを含むディレクトリへのパス、またはgitリポジトリへのURLを定義（．あるいは明記無しでプロジェクトディレクトリとなる）
             * dockerfile：代替のDockerfileを設定
             * args：ビルド引数、DockerfileのARG値を定義
@@ -212,10 +212,11 @@ docker exec -it ＜起動したコンテナ名＞ bash
 
 * docker-compose：コマンド
     * build
-        * imageを構築、コンテナは作成せず
+        * Dockerイメージを構築、コンテナは作成せず
         * 一度ビルドするとキャッシュが作成され、次回以降処理が早くなる
     * up
-        * コンテナの構築・起動を行う、キャッシュがある場合、キャッシ使用し、image構築、コンテナ構築、コンテナ実行を一括で実施可能
+        * コンテナの構築・起動を行う
+        * キャッシュがある場合、キャッシ使用し、イメージ構築、コンテナ構築、コンテナ実行を一括で実施可能
         * オプション
             * --build：キャッシュがない場合は、本オプションつけることで上記を行える
             * -d：バックグラウンドにて実行
@@ -225,4 +226,14 @@ docker exec -it ＜起動したコンテナ名＞ bash
             # ex
             docker-compose exec web(サービス名) /bin/bash(コマンド)
             root@XXXXXXXXX:/app
+            ```
+    * run
+        * イメージ構築、コンテナ構築・起動を一括で行える
+        * 引数でサービス名を指名しないといけない
+            ```shell
+            # ex
+            docker-compose run web
+            # runコマンドを介し指定したサービスコンテナ内でコマンド実行可能
+            # ex
+            docker-compose run web rails new
             ```
