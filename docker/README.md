@@ -124,60 +124,62 @@ docker exec -it ＜起動したコンテナ名＞ bash
 * Docker-composeは一度に複数のコンテナ操作可能、コンテナが複数存在する環境を構築可能
 * コンテナの作成・起動にはDockerFileが必要（Docker-Compose.ymlに明記）
 * docker-compose.ymlの記述詳細
-```shell
-## docker-compose.ymlの大枠 ##
-version: "3" #Docker Composeで使用するバージョンを指定
-services: # services以下コンテナ名は何でも可
-    コンテナ名1:
-    コンテナ名2:
-  ...
-networks: #直下にネットワーク名定義
-    ネットワーク名1:
-    ネットワーク名2:
-  ...
-volumes: #直下にボリューム名定義
-    ボリューム名1:
-    ボリューム名2:
-  ...
-```
-```shell
-### servicesの詳細 ###
-services:
-  コンテナ1:
-        image: <イメージ名>
-        container_name: <コンテナ名>
-        networks:
-            - <ネットワーク名>
-        volumes:
-            - <ボリューム名>
-        ports:
-            - <ポート番号>
-        environment:
-            <キー1>: <バリュー1>
-            <キー2>: <バリュー2>
-            ...
-        depends_on:
-            - <依存関係にあるサービス>
-        restart: <コンテナ停止時の対応>
-        command: <実行するコマンド>
-  コンテナ2:
-  ...
-```
-* image：指定するイメージ
-* build：指定するDockerfile
-* container_name：指定するコンテナ名
-* networks：接続するネットワーク
-* volumes：マウント設定
-* volumes_from：コンテナ間でマウントする際、マウント先のコンテナを指定
-* ports：マッピングするポート番号
-* environment：設定する環境変数
-* depends_on：依存関係にある別のサービス
-* restart：コンテナが停止した際の再試行設定
-    * always（必ず再起動）
-    * no （何もしない）
-* command：実行するコマンド
-* env_file：実行時に読み込みたい環境設定ファイル
-* entrypoint：実行時に上書きするENTRYPOINT
-* logging：ログを出力するパス
-* external_links：設定する外部リンク
-* network_mode：ネットワークモード設定
+    * 全体構成
+        ```shell
+        ## docker-compose.ymlの大枠 ##
+        version: "3" #Docker Composeで使用するバージョンを指定
+        services: # services以下コンテナ名は何でも可
+            コンテナ名1:
+            コンテナ名2:
+        ...
+        networks: #直下にネットワーク名定義
+            ネットワーク名1:
+            ネットワーク名2:
+        ...
+        volumes: #直下にボリューム名定義
+            ボリューム名1:
+            ボリューム名2:
+        ...
+        ```
+    * services
+        ```shell
+        ### servicesの詳細 ###
+        services:
+        コンテナ1:
+                image: <イメージ名>
+                container_name: <コンテナ名>
+                networks:
+                    - <ネットワーク名>
+                volumes:
+                    - <ボリューム名>
+                ports:
+                    - <ポート番号>
+                environment:
+                    <キー1>: <バリュー1>
+                    <キー2>: <バリュー2>
+                    ...
+                depends_on:
+                    - <依存関係にあるサービス>
+                restart: <コンテナ停止時の対応>
+                command: <実行するコマンド>
+        コンテナ2:
+        ...
+        ```
+        * image：指定するイメージ
+        * build：指定するDockerfile
+        * container_name：指定するコンテナ名
+        * networks：接続するネットワーク
+        * volumes：マウント設定
+        * volumes_from：コンテナ間でマウントする際、マウント先のコンテナを指定
+        * ports：マッピングするポート番号
+        * environment：設定する環境変数
+        * depends_on：依存関係にある別のサービス
+        * restart：コンテナが停止した際の再試行設定
+            * always：（必ず再起動）
+            * no ：（何もしない）
+        * command：実行するコマンド
+        * env_file：実行時に読み込みたい環境設定ファイル
+        * entrypoint：実行時に上書きするENTRYPOINT
+        * logging：ログを出力するパス
+        * external_links：設定する外部リンク
+        * network_mode：ネットワークモード設定
