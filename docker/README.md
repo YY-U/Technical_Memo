@@ -113,7 +113,71 @@ docker exec -it ＜起動したコンテナ名＞ bash
     docker run -it --name Container2 --link Container1:c1 centos /bin/bash
     ```
 
-## 参照
+### 参照
 * https://thinkit.co.jp/story/2015/09/08/6383
 * https://qiita.com/mmizum/items/bb4a745b8613136c7560
 * https://plus-idea.net/docker-web-server-access-denied/
+
+## docker-compose
+* Docker Compose使用する際、"compose.yml"という名前のファイルに、各コンテナに対する設定を予め定義する
+* Docker（Docker Engine）では一度に一つのコンテナ操作しかできない
+* Docker-composeは一度に複数のコンテナ操作可能、コンテナが複数存在する環境を構築可能
+* コンテナの作成・起動にはDockerFileが必要（Docker-Compose.ymlに明記）
+* docker-compose.ymlの記述詳細
+```shell
+## docker-compose.ymlの大枠 ##
+version: "3" #Docker Composeで使用するバージョンを指定
+services: # services以下コンテナ名は何でも可
+    コンテナ名1:
+    コンテナ名2:
+  ...
+networks:
+    ネットワーク名1:
+    ネットワーク名2:
+  ...
+volumes:
+    ボリューム名1:
+    ボリューム名2:
+  ...
+```
+```shell
+### servicesの詳細 ###
+services:
+  コンテナ1:
+    image: <イメージ名>
+    container_name: <コンテナ名>
+    networks:
+        - <ネットワーク名>
+    volumes:
+        - <ボリューム名>
+    ports:
+        - <ポート番号>
+    environment:
+        <キー1>: <バリュー1>
+        <キー2>: <バリュー2>
+        ...
+    depends_on:
+        - <依存関係にあるサービス>
+    restart: <コンテナ停止時の対応>
+    command: <実行するコマンド>
+  コンテナ2:
+  ...
+```
+* image：指定するイメージ
+* build：指定するDockerfile
+* container_name：指定するコンテナ名
+* networks：接続するネットワーク
+* volumes：マウント設定
+* volumes_from：コンテナ間でマウントする際、マウント先のコンテナを指定
+* ports：マッピングするポート番号
+* environment：設定する環境変数
+* depends_on：依存関係にある別のサービス
+* restart：コンテナが停止した際の再試行設定
+    * always（必ず再起動）
+    * no （何もしない）
+* command：実行するコマンド
+* env_file：実行時に読み込みたい環境設定ファイル
+* entrypoint：実行時に上書きするENTRYPOINT
+* logging：ログを出力するパス
+* external_links：設定する外部リンク
+* network_mode：ネットワークモード設定
