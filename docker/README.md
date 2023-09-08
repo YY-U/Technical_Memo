@@ -124,6 +124,8 @@ docker exec -it ＜起動したコンテナ名＞ bash
 * Docker-composeは一度に複数のコンテナ操作可能、コンテナが複数存在する環境を構築可能
 * コンテナの作成・起動にはDockerFileが必要（Docker-Compose.ymlに明記）
 * docker-compose.ymlの記述詳細
+    * 参考
+        * https://docs.docker.com/compose/compose-file/03-compose-file/
     * 全体構成
         ```shell
         ## docker-compose.ymlの大枠 ##
@@ -167,9 +169,13 @@ docker exec -it ＜起動したコンテナ名＞ bash
         ```
         * image：指定するイメージ
         * build：指定するDockerfile
+            * context：Dockerfileを含むディレクトリへのパス、またはgitリポジトリへのURLを定義（．あるいは明記無しでプロジェクトディレクトリとなる）
+            * dockerfile：代替のDockerfileを設定
+            * args：ビルド引数、DockerfileのARG値を定義
         * container_name：指定するコンテナ名
         * networks：接続するネットワーク
         * volumes：マウント設定
+            * [ホスト側相対Path]:[コンテナ絶対path]
         * volumes_from：コンテナ間でマウントする際、マウント先のコンテナを指定
         * ports：マッピングするポート番号
         * environment：設定する環境変数
