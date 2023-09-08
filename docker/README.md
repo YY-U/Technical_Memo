@@ -118,6 +118,26 @@ docker exec -it ＜起動したコンテナ名＞ bash
 * https://qiita.com/mmizum/items/bb4a745b8613136c7560
 * https://plus-idea.net/docker-web-server-access-denied/
 
+## Dockerfile
+* コマンド
+    * FROM：DockerHubで公開中の元イメージを指定
+        * `FROM <IMAGE NAME>[:TAG]`
+    * LABEL：作成者情報・バージョンを指定
+    * COPY：イメージにファイルを追加
+        * `COPY <コピー元path> <コピー先path>`
+    * ADD：イメージにファイルを追加。圧縮ファイル指定時は圧縮まで実行される。
+    * RUN：イメージをBuildする際に実行するコマンド
+        * `RUN <コマンド>`
+    * CMD：コンテナ起動の際に実行するコマンド
+    * ENTRYPOINT：イメージ実行時に強要するコマンド
+    * USER：RUN、CMD、ENTRYPOINTで指定のコマンドを実行するユーザー
+    * WORKDIR：RUN、CMD、ENTRYPOINT、ADD、COPYの際の作業ディレクトリ
+    * ENV：環境変数を設定
+    * ONBUILD：Build完了時に実行するコマンド
+    * EXPOSE：イメージ利用者にポートを解放
+    * VOLUME：イメージ利用者に永続データが保存される場所を解放
+    * ARG：docker build時に指定する引数
+
 ## docker-compose
 * Docker Compose使用する際、"compose.yml"という名前のファイルに、各コンテナに対する設定を予め定義する
 * Docker（Docker Engine）では一度に一つのコンテナ操作しかできない
@@ -203,6 +223,6 @@ docker exec -it ＜起動したコンテナ名＞ bash
         * サービスのコンテナ内でコマンド実行可能
             ```shell
             # ex
-            docker-compose exec web /bin/bash
+            docker-compose exec web(サービス名) /bin/bash(コマンド)
             root@XXXXXXXXX:/app
             ```
