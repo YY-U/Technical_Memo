@@ -14,6 +14,8 @@ echo "Hello World"
     * `$0`：シェルスクリプトのファイル名
     * `$1`,`$2`,`$3` ...：シェルスクリプトのn番目の引数の値
     * `$*`または`$@`：シェルスクリプト実行時のすべての引数の値
+    * `$$`：プロセス番号
 
 * 参考：
     * https://x-tech.pasona.co.jp/media/detail.html?p=7481
+    * https://www.wakuwakubank.com/posts/347-linux-shell/#index_id1
