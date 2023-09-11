@@ -119,6 +119,7 @@ docker exec -it ＜起動したコンテナ名＞ bash
 * https://plus-idea.net/docker-web-server-access-denied/
 
 ## Dockerfile
+* 上から順に一行ごとに実行される
 * コマンド
     * FROM：DockerHubで公開中の元イメージを指定
         * `FROM <IMAGE NAME>[:TAG]`
